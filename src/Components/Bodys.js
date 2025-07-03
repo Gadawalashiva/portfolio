@@ -55,7 +55,7 @@ function Body() {
       setLoopNumTop(loopNumTop + 1);
       setTypingSpeedTop(typeDelay);
     }
-  }, [isDeletingTop, loopNumTop, typedTextTop]);
+  }, [isDeletingTop, loopNumTop, typedTextTop, toRotateTop]);
 
   const tick2 = useCallback(() => {
     const i = loopNum2 % toRotate2.length;
@@ -84,7 +84,7 @@ function Body() {
       setLoopNum2(loopNum2 + 1);
       setTypingSpeed2(typeDelay);
     }
-  }, [isDeleting2, loopNum2, typedText2]);
+  }, [isDeleting2, loopNum2, typedText2, toRotate2]);
 
   useEffect(() => {
     const ticker = setInterval(() => {
