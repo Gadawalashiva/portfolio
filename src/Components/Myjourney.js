@@ -32,7 +32,6 @@ function MyJourney() {
     const eduCenter = eduRect.top + eduRect.height / 2 - wrapperRect.top;
     const expCenter = expRect.top + expRect.height / 2 - wrapperRect.top;
 
-
     const lineTop = eduCenter;
     const lineHeight = expCenter - eduCenter;
 
@@ -41,12 +40,14 @@ function MyJourney() {
   };
 
   useEffect(() => {
-    
     const sectionObserverOptions = {
       root: null,
       rootMargin: '0px',
       threshold: 0.1
     };
+
+    const eduNode = educationRef.current;
+    const expNode = experienceRef.current;
 
     const eduObserver = new window.IntersectionObserver((entries) => {
       entries.forEach(entry => setEducationVisible(entry.isIntersecting));
@@ -56,16 +57,16 @@ function MyJourney() {
       entries.forEach(entry => setExperienceVisible(entry.isIntersecting));
     }, sectionObserverOptions);
 
-    if (educationRef.current) eduObserver.observe(educationRef.current);
-    if (experienceRef.current) expObserver.observe(experienceRef.current);
+    if (eduNode) eduObserver.observe(eduNode);
+    if (expNode) expObserver.observe(expNode);
 
     window.addEventListener('scroll', updateConnectingLine);
     window.addEventListener('resize', updateConnectingLine);
     updateConnectingLine();
 
     return () => {
-      if (educationRef.current) eduObserver.unobserve(educationRef.current);
-      if (experienceRef.current) expObserver.unobserve(experienceRef.current);
+      if (eduNode) eduObserver.unobserve(eduNode);
+      if (expNode) expObserver.unobserve(expNode);
       window.removeEventListener('scroll', updateConnectingLine);
       window.removeEventListener('resize', updateConnectingLine);
     };
@@ -115,7 +116,7 @@ function MyJourney() {
             <h2>Software Developer Intern</h2>
             <div className="section-marker"></div>
           </div>
-          <div className="section-details-right  card-right">
+          <div className="section-details-right card-right">
             <div className="journey-card">
               <h4>Greemus Software Technologies</h4>
               <ul>

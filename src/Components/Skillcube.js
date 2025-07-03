@@ -1,5 +1,4 @@
 import React from "react";
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import {
@@ -7,9 +6,6 @@ import {
   faCss3Alt,
   faJs,
   faNodeJs,
-  faReact, 
-  faNpm,
-  faGit,
 } from '@fortawesome/free-brands-svg-icons';
 import { faDatabase, faCode } from '@fortawesome/free-solid-svg-icons';
 
@@ -17,9 +13,9 @@ import '../styles/skillcube.css';
 
 const SkillCube = ({
   themeColors = {
-    secondaryBg: '#222',         
-    accentColor: '#FFD700',      
-    buttonTextDark: '#000',      
+    secondaryBg: '#222',
+    accentColor: '#FFD700',
+    buttonTextDark: '#000',
   }
 }) => {
   const skills = [
@@ -30,6 +26,7 @@ const SkillCube = ({
     { name: "JavaScript", icon: faJs },
     { name: "MongoDB", icon: faDatabase },
   ];
+
   const renderFace = (skill, index) => {
     const faceClasses = [
       "front", "back", "right", "left", "top", "bottom"

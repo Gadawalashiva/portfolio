@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import '../styles/softskill.css'; 
+
 function Softskill() {
   const skillsContainerRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -18,29 +19,31 @@ function Softskill() {
   ];
 
   useEffect(() => {
+    const currentRef = skillsContainerRef.current;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setIsVisible(true);
-            observer.unobserve(entry.target); 
+            observer.unobserve(entry.target);
           }
         });
       },
       {
         root: null,
         rootMargin: '0px',
-        threshold: 0.2, 
+        threshold: 0.2,
       }
     );
 
-    if (skillsContainerRef.current) {
-      observer.observe(skillsContainerRef.current);
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (skillsContainerRef.current) {
-        observer.unobserve(skillsContainerRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []); 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faFile } from '@fortawesome/free-solid-svg-icons';
@@ -6,7 +6,6 @@ import SkillCube from "./Skillcube";
 import '../styles/body.css';
 
 function Body() {
- 
   const [typedTextTop, setTypedTextTop] = useState("");
   const [isDeletingTop, setIsDeletingTop] = useState(false);
   const [loopNumTop, setLoopNumTop] = useState(0);
@@ -17,11 +16,9 @@ function Body() {
   const [loopNum2, setLoopNum2] = useState(0);
   const [typingSpeed2, setTypingSpeed2] = useState(150);
 
- 
   const toRotateTop = [
     { prefix: "I'm ", suffix: "Shiva" },
   ];
-
 
   const toRotate2 = [
     { prefix: "I am ", suffix: "fullstack developer" },
@@ -31,30 +28,7 @@ function Body() {
   const eraseDelay = 1000;
   const typeDelay = 500;
 
-
-  useEffect(() => {
-    let ticker = setInterval(() => {
-      tickTop();
-    }, typingSpeedTop);
-
-    return () => {
-      clearInterval(ticker);
-    };
-  }, [typedTextTop, isDeletingTop, typingSpeedTop, loopNumTop]);
-
-
-  useEffect(() => {
-    let ticker = setInterval(() => {
-      tick2();
-    }, typingSpeed2);
-
-    return () => {
-      clearInterval(ticker);
-    };
-  }, [typedText2, isDeleting2, typingSpeed2, loopNum2]);
-
-
-  const tickTop = () => {
+  const tickTop = useCallback(() => {
     const i = loopNumTop % toRotateTop.length;
     const currentPhrase = toRotateTop[i];
     const fullText = currentPhrase.prefix + currentPhrase.suffix;
@@ -81,10 +55,9 @@ function Body() {
       setLoopNumTop(loopNumTop + 1);
       setTypingSpeedTop(typeDelay);
     }
-  };
+  }, [isDeletingTop, loopNumTop, typedTextTop]);
 
-  // Logic for the bottom typing animation (unchanged)
-  const tick2 = () => {
+  const tick2 = useCallback(() => {
     const i = loopNum2 % toRotate2.length;
     const currentPhrase = toRotate2[i];
     const fullText = currentPhrase.prefix + currentPhrase.suffix;
@@ -111,23 +84,28 @@ function Body() {
       setLoopNum2(loopNum2 + 1);
       setTypingSpeed2(typeDelay);
     }
-  };
+  }, [isDeleting2, loopNum2, typedText2]);
 
-  const themeColors = {
-    primaryBg: 'var(--primary-bg)',
-    secondaryBg: 'var(--secondary-bg)',
-    textColorPrimary: 'var(--text-color-primary)',
-    accentColor: 'var(--accent-color)',
-    hoverBg: 'var(--hover-bg)',
-    buttonTextDark: 'var(--button-text-dark)',
-  };
+  useEffect(() => {
+    const ticker = setInterval(() => {
+      tickTop();
+    }, typingSpeedTop);
 
-  
+    return () => clearInterval(ticker);
+  }, [tickTop, typingSpeedTop]);
+
+  useEffect(() => {
+    const ticker = setInterval(() => {
+      tick2();
+    }, typingSpeed2);
+
+    return () => clearInterval(ticker);
+  }, [tick2, typingSpeed2]);
+
   const renderGoldTypedTextTop = () => {
     const i = loopNumTop % toRotateTop.length;
     const currentPhrase = toRotateTop[i];
     const prefixLength = currentPhrase.prefix.length;
-
     const currentTypedLength = typedTextTop.length;
 
     let prefixPart = "";
@@ -148,12 +126,10 @@ function Body() {
     );
   };
 
- 
   const renderGoldTypedText = () => {
     const i = loopNum2 % toRotate2.length;
     const currentPhrase = toRotate2[i];
     const prefixLength = currentPhrase.prefix.length;
-
     const currentTypedLength = typedText2.length;
 
     let prefixPart = "";
@@ -175,24 +151,21 @@ function Body() {
   };
 
   return (
-
     <div id="home" className="BodyWrapper">
       <h4 className="Freelance"><span>Available For</span> Freelance Projects</h4>
 
       <div className="Container">
         <div className="Information">
-       
           <div className="top-dynamic-text">
             <h2>
               {renderGoldTypedTextTop()}
-              <span className="cursor top-cursor">|</span> 
+              <span className="cursor top-cursor">|</span>
             </h2>
           </div>
 
-
           <p>
             I'm a 21-year-old ECE student and aspiring full-stack developer.
-            I'm skilled <br />in React.js, and the Backend, with a passion for building creative and <br /> efficient applications.
+            I'm skilled <br /> in React.js, and the Backend, with a passion for building creative and <br /> efficient applications.
             Currently, I'm focused on honing my development <br /> skills and exploring new skills.
           </p>
           <div className="secondary-dynamic-text">
@@ -212,7 +185,7 @@ function Body() {
           </div>
         </div>
         <div className="SkillCubeWrapper">
-          <SkillCube /> 
+          <SkillCube />
         </div>
       </div>
     </div>
