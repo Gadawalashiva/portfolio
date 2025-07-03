@@ -1,0 +1,321 @@
+
+.about-page {
+  font-family: Arial, sans-serif;
+  color: #f8f8f8;
+  padding: 20px;
+  background-color: #000000;
+}
+
+.about-header {
+  text-align: center;
+  margin-bottom: 50px;
+  padding: 20px;
+  background-color: #30302f;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+.about-header:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+}
+.about-header h1 {
+  font-size: 3em;
+  color: #f58f0a;
+  margin-bottom: 10px;
+}
+.about-header .subtitle {
+  font-size: 1.5em;
+  color: #995c07;
+  margin-bottom: 15px;
+}
+.about-header .description {
+  font-size: 1.1em;
+  color: #fa6908;
+  max-width: 900px;
+  margin: 0 auto;
+  line-height: 1.6;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.about-header .description p:first-child {
+  text-align: left;
+  flex: 1;
+  padding-right: 15px;
+}
+.about-header .description p:last-child {
+  text-align: right;
+  flex: 1;
+  padding-left: 15px;
+}
+
+/* Main Content Container */
+.about-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.info-card {
+  background-color: #333333;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  padding: 20px;
+  flex: 1;
+  min-width: 250px;
+  max-width: 350px;
+  text-align: left;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+}
+.info-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+}
+.info-card h1 {
+  font-size: 1.8em;
+  color: #f9b006;
+  margin-bottom: 15px;
+  text-align: center;
+}
+.info-section {
+  margin-bottom: 15px;
+  background-color: #444444;
+  border-radius: 8px;
+  padding: 8px;
+  text-align: center;
+  border: 1px solid rgba(255, 215, 0, 0.2);
+}
+.info-section h4 {
+  font-size: 1.1em;
+  color: #f19f07;
+  margin-bottom: 3px;
+}
+.info-section p {
+  font-size: 0.95em;
+  color: #fcf6f6;
+  line-height: 1.5;
+}
+
+.tech-card {
+  background-color: #333333;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  padding: 20px;
+  flex: 2;
+  min-width: 300px;
+  max-width: 550px;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+}
+.tech-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+}
+.tech-card h3 {
+  font-size: 1.8em;
+  color: #e4e6e9;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+
+.marquee-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.marquee {
+  white-space: nowrap;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.marquee-content {
+  display: inline-block;
+  animation-duration: 34s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+@keyframes marquee-continuous-left-to-right {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(0%); }
+}
+@keyframes marquee-continuous-right-to-left {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+.marquee-left .marquee-content {
+  animation-name: marquee-continuous-left-to-right;
+}
+.marquee-right .marquee-content {
+  animation-name: marquee-continuous-right-to-left;
+}
+
+.skill {
+  display: inline-block;
+  background-color: #222222;
+  color: #ffd700;
+  padding: 8px 16px;
+  border-radius: 5px;
+  margin: 0 10px;
+  font-size: 1em;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border: 1px solid #ffd700;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+.skill:hover {
+  background-color: #ffd700;
+  color: #222222;
+  transform: translateY(-2px);
+}
+.hobbies-card {
+  background-color: #333333;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  padding: 20px;
+  flex: 1;
+  min-width: 250px;
+  max-width: 350px;
+  text-align: center;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+}
+.hobbies-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+}
+.hobbies-card h3 {
+  font-size: 1.8em;
+  color: #f9b006;
+  margin-bottom: 20px;
+}
+.hobbies-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.hobbies-card .hobby-item {
+  background-color: #444444;
+  color: #ffd700;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  font-size: 1em;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.hobbies-card .hobby-item:last-child {
+  margin-bottom: 0;
+}
+.hobbies-card .hobby-item:hover {
+  background-color: #ffd700;
+  color: black;
+  transform: translateX(5px);
+}
+.map-card {
+  background-color: #333333;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  padding: 20px;
+  flex: 2;
+  min-width: 300px;
+  max-width: 550px;
+  text-align: center;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+}
+.map-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+}
+.map-card h3 {
+  font-size: 1.8em;
+  color: #f9b006;
+  margin-bottom: 20px;
+}
+.map-embed-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 215, 0, 0.2);
+}
+.map-embed-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 8px;
+}
+@media (max-width: 768px) {
+  .about-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .info-card, .tech-card, .hobbies-card, .map-card {
+    max-width: 90%;
+    min-width: unset;
+  }
+  .about-header h1 {
+    font-size: 2.5em;
+  }
+  .about-header .subtitle {
+    font-size: 1.2em;
+  }
+  .info-card h1, .tech-card h3, .hobbies-card h3, .map-card h3 {
+    font-size: 1.8em;
+  }
+  .about-header .description {
+    flex-direction: column;
+    align-items: center;
+  }
+  .about-header .description p:first-child,
+  .about-header .description p:last-child {
+    text-align: center;
+    padding: 0;
+    margin-bottom: 10px;
+  }
+  .map-card {
+    width: 350px;
+    height: 650px;
+  }
+}
+@media (max-width: 480px) {
+  .about-page {
+    padding: 10px;
+  }
+  .about-header h1 {
+    font-size: 2em;
+  }
+  .about-header .subtitle {
+    font-size: 1em;
+  }
+  .info-section h4 {
+    font-size: 1.1em;
+  }
+  .info-section p {
+    font-size: 0.95em;
+  }
+  .skill {
+    font-size: 0.95em;
+    padding: 6px 12px;
+    margin: 0 8px;
+  }
+  .hobbies-card .hobby-item {
+    font-size: 0.95em;
+    padding: 8px 12px;
+  }
+  .map-card {
+    width: 350px;
+    height: 650px;
+  }
+}
