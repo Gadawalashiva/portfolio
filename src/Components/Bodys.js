@@ -5,6 +5,16 @@ import { faFile } from '@fortawesome/free-solid-svg-icons';
 import SkillCube from "./Skillcube";
 import '../styles/body.css';
 
+// ✅ Moved arrays outside the component so their references are stable
+const toRotateTop = [
+  { prefix: "I'm ", suffix: "Shiva" },
+];
+
+const toRotate2 = [
+  { prefix: "I am ", suffix: "fullstack developer" },
+  { prefix: "I am ", suffix: "freelance" }
+];
+
 function Body() {
   const [typedTextTop, setTypedTextTop] = useState("");
   const [isDeletingTop, setIsDeletingTop] = useState(false);
@@ -15,15 +25,6 @@ function Body() {
   const [isDeleting2, setIsDeleting2] = useState(false);
   const [loopNum2, setLoopNum2] = useState(0);
   const [typingSpeed2, setTypingSpeed2] = useState(150);
-
-  const toRotateTop = [
-    { prefix: "I'm ", suffix: "Shiva" },
-  ];
-
-  const toRotate2 = [
-    { prefix: "I am ", suffix: "fullstack developer" },
-    { prefix: "I am ", suffix: "freelance" }
-  ];
 
   const eraseDelay = 1000;
   const typeDelay = 500;
@@ -55,7 +56,7 @@ function Body() {
       setLoopNumTop(loopNumTop + 1);
       setTypingSpeedTop(typeDelay);
     }
-  }, [isDeletingTop, loopNumTop, typedTextTop, toRotateTop]);
+  }, [isDeletingTop, loopNumTop, typedTextTop]);
 
   const tick2 = useCallback(() => {
     const i = loopNum2 % toRotate2.length;
@@ -84,7 +85,7 @@ function Body() {
       setLoopNum2(loopNum2 + 1);
       setTypingSpeed2(typeDelay);
     }
-  }, [isDeleting2, loopNum2, typedText2, toRotate2]);
+  }, [isDeleting2, loopNum2, typedText2]);
 
   useEffect(() => {
     const ticker = setInterval(() => {
