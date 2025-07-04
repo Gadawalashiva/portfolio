@@ -6,7 +6,6 @@ import eduImage from '../asests/Education.jpg';
 import foodImage from '../asests/FoodImage.jpg';
 import todoImage from '../asests/TodoList.jpg';
 import '../styles/projects.css'; 
-import '../styles/miniproject.css'; 
 
 function All() {
   return (
